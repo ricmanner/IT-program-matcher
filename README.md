@@ -1,6 +1,6 @@
 # Programmatchning
 
-**[Try it out](https://course-program-matcher.vercel.app/)**
+**[Try it out](https://it-program-matcher.vercel.app/)**
 
 A web app that helps students at Högskolan i Skövde find which program fits their course interests.
 
@@ -62,4 +62,4 @@ Visit `http://localhost:3001`
 
 MIT
 
-**Live:** https://course-program-matcher.vercel.app/
+**Live:** https://it-program-matcher.vercel.app/
