@@ -45,7 +45,7 @@ export default function Home() {
           <h2 style={{fontWeight:700,fontSize:20,marginBottom:8}}>Välkommen!</h2>
           <p style={{color:'var(--text-muted)',lineHeight:1.6,margin:0}}>
             Välj kurser som verkar intressanta och se vilket program på Högskolan i Skövde som passar bäst. 
-            Matchningen uppdateras direkt.
+            Matchningen uppdateras i realtid.
           </p>
         </div>
         <div style={{fontSize:13,color:'var(--text-muted)',fontStyle:'italic'}}>
