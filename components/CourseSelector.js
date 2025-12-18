@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 
 export default function CourseSelector({ courses, selectedIds, onChange, courseOverlapCounts = {} }) {
   const [q, setQ] = useState('')
-  const [showSelected, setShowSelected] = useState(true)
+  const [showSelected, setShowSelected] = useState(false)
 
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase()
