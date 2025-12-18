@@ -3,8 +3,6 @@ import { useState, useMemo } from 'react'
 export default function CourseSelector({ courses, selectedIds, onChange, courseOverlapCounts = {} }) {
   const [q, setQ] = useState('')
   const [showSelected, setShowSelected] = useState(false)
-  const [expandedCategories, setExpandedCategories] = useState({})
-  const [viewMode, setViewMode] = useState('categories') // 'list' or 'categories'
 
   const coursesById = useMemo(() => {
     const map = {}
@@ -39,10 +37,6 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
   }
 
   function clearAll() { onChange([]) }
-
-  function toggleCategory(cat) {
-    setExpandedCategories(prev => ({...prev, [cat]: !prev[cat]}))
-  }
 
   function renderCourseItem(c) {
     return (
@@ -151,44 +145,8 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
           <div style={{fontWeight:700,fontSize:13,color:'#6b7280'}}>
             {filtered ? `Sökresultat (${filtered.length})` : 'Välj kurser'}
           </div>
-          {!filtered && (
-            <div style={{display:'flex',gap:4,background:'var(--bg-secondary)',padding:4,borderRadius:8,border:'1px solid var(--card-border)'}}>
-              <button
-                onClick={() => setViewMode('list')}
-                style={{
-                  padding:'6px 12px',
-                  border:'none',
-                  borderRadius:6,
-                  background: viewMode === 'list' ? 'var(--primary)' : 'transparent',
-                  color: viewMode === 'list' ? 'white' : 'var(--text-muted)',
-                  cursor:'pointer',
-                  fontSize:13,
-                  fontWeight:600,
-                  transition:'all 0.2s'
-                }}
-                title="Lista"
-              >
-                ☰
-              </button>
-              <button
-                onClick={() => setViewMode('categories')}
-                style={{
-                  padding:'6px 12px',
-                  border:'none',
-                  borderRadius:6,
-                  background: viewMode === 'categories' ? 'var(--primary)' : 'transparent',
-                  color: viewMode === 'categories' ? 'white' : 'var(--text-muted)',
-                  cursor:'pointer',
-                  fontSize:13,
-                  fontWeight:600,
-                  transition:'all 0.2s'
-                }}
-                title="Kategorier"
-              >
-                📁
-              </button>
-            </div>
-          )}
+          {!filtered fontWeight:700,fontSize:13,color:'#6b7280'}}>
+          {filtered ? `Sökresultat (${filtered.length})` : 'Alla kurser'}
         </div>
       </div>
 
@@ -203,39 +161,26 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
             filtered.map(c => renderCourseItem(c))
           )}
         </div>
-      ) : viewMode === 'list' ? (
-        // Show flat list of all courses
-        <div className="course-list">
-          {courses.map(c => renderCourseItem(c))}
-        </div>
       ) : (
-        // Show categories
-        <div style={{display:'flex',flexDirection:'column',gap:12}}>
+        // Show all courses organized by category
+        <div className="course-list">
           {Object.entries(coursesByCategory).map(([category, coursesInCat]) => (
-            <div key={category}>
-              <div 
-                className="collapsible-header"
-                onClick={() => toggleCategory(category)}
-              >
-                <div style={{display:'flex',alignItems:'center',gap:8}}>
-                  <strong style={{fontWeight:600,fontSize:14}}>{category}</strong>
-                  <span className="count-badge" style={{background:'var(--bg-secondary)',color:'var(--text-muted)',border:'1px solid var(--card-border)'}}>
-                    {coursesInCat.length}
-                  </span>
-                </div>
-                <span className="collapse-icon">
-                  {expandedCategories[category] ? '▼' : '▶'}
-                </span>
+            <div key={category} style={{marginBottom:20}}>
+              <div style={{
+                fontWeight:700,
+                fontSize:14,
+                color:'var(--primary)',
+                marginBottom:8,
+                paddingBottom:6,
+                borderBottom:'2px solid var(--card-border)',
+                position:'sticky',
+                top:0,
+                background:'var(--bg-secondary)',
+                zIndex:1
+              }}>
+                {category}
               </div>
-              {expandedCategories[category] && (
-                <div className="course-list" style={{marginTop:8,maxHeight:'400px'}}>
-                  {coursesInCat.map(c => renderCourseItem(c))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
+              {coursesInCat.map(c => renderCourseItem(c)
 
       <div className="muted" style={{marginTop:12,textAlign:'center',fontSize:12}}>
         {selectedIds.length > 0 ? `${selectedIds.length} valda` : 'Välj kurser för att börja'}
