@@ -78,12 +78,12 @@ export default function Home() {
       </div>
 
       {comparisonMode ? (
-        <div className="card">
+        <div className="card fade-in">
           <div style={{marginBottom:20}}>
             <h3 style={{marginTop:0,marginBottom:16}}>Välj program att jämföra</h3>
             <div style={{display:'flex',flexDirection:'column',gap:10}}>
               {programs.map(p => (
-                <label key={p.id} style={{display:'flex',alignItems:'center',gap:10,cursor:'pointer'}}>
+                <label key={p.id} className="program-select-item" style={{opacity: (!comparisonProgramIds.includes(p.id) && comparisonProgramIds.length >= 3) ? 0.5 : 1}}>
                   <input
                     type="checkbox"
                     checked={comparisonProgramIds.includes(p.id)}
@@ -125,7 +125,7 @@ export default function Home() {
           )}
         </div>
       ) : (
-        <div className="layout">
+        <div className="layout fade-in">
           <div>
             <div className="card">
               <CourseSelector
