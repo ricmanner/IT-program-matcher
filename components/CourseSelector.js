@@ -4,6 +4,12 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
   const [q, setQ] = useState('')
   const [showSelected, setShowSelected] = useState(false)
 
+  const coursesById = useMemo(() => {
+    const map = {}
+    for (const c of courses) map[c.id] = c
+    return map
+  }, [courses])
+
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase()
     if (!s) return courses
@@ -72,7 +78,7 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
           {showSelected && (
             <div className="selected-chips">
               {selectedIds.map(id => {
-                const c = courses.find(x => x.id === id)
+                const c = coursesById[id]
                 if (!c) return null
                 return (
                   <button
