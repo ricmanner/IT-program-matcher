@@ -53,7 +53,7 @@ const programs = [
   {
     id: 'user-experience-design',
     name: 'User Experience Design',
-    url: 'https://www.his.se/utbildning/data-och-it/user-experience-design/',
+    url: 'https://www.his.se/utbildning/data-och-it/user-experience-design-uxdpg/',
     courseIds: [
       'introduktion-till-informationssakerhet','introduktion-till-ux-design','it-i-organisationer-introduktion',
       'manniskans-kognitiva-formagor-och-it','webbutveckling-webbplatsdesign','affective-interaction-och-emotioner',
