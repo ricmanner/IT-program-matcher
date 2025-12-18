@@ -62,17 +62,15 @@ export default function ProgramList({ programs, selectedIds, coursesById }) {
             {p.matched.length > 0 && (
               <div className="course-list-details">
                 <div 
-                  style={{
-                    display:'flex',
-                    alignItems:'center',
-                    justifyContent:'space-between',
-                    cursor:'pointer',
-                    padding:'8px 0'
-                  }}
+                  className="collapsible-header"
                   onClick={() => setExpandedMatched(prev => ({...prev, [p.id]: !prev[p.id]}))}
                 >
-                  <strong className="matched">Matchade kurser ({p.matched.length})</strong>
-                  <span style={{color:'var(--success)',fontSize:12,fontWeight:600}}>
+                  <div style={{display:'flex',alignItems:'center',gap:8}}>
+                    <span style={{fontSize:16}}>✓</span>
+                    <strong className="matched">Matchade kurser</strong>
+                    <span className="count-badge matched-badge">{p.matched.length}</span>
+                  </div>
+                  <span className="collapse-icon">
                     {expandedMatched[p.id] ? '▼' : '▶'}
                   </span>
                 </div>
@@ -89,17 +87,15 @@ export default function ProgramList({ programs, selectedIds, coursesById }) {
             {p.missingSelected.length > 0 && (
               <div className="course-list-details">
                 <div 
-                  style={{
-                    display:'flex',
-                    alignItems:'center',
-                    justifyContent:'space-between',
-                    cursor:'pointer',
-                    padding:'8px 0'
-                  }}
+                  className="collapsible-header"
                   onClick={() => setExpandedMissing(prev => ({...prev, [p.id]: !prev[p.id]}))}
                 >
-                  <strong className="missing">Finns inte i programmet ({p.missingSelected.length})</strong>
-                  <span style={{color:'var(--danger)',fontSize:12,fontWeight:600}}>
+                  <div style={{display:'flex',alignItems:'center',gap:8}}>
+                    <span style={{fontSize:16}}>✕</span>
+                    <strong className="missing">Finns inte i programmet</strong>
+                    <span className="count-badge missing-badge">{p.missingSelected.length}</span>
+                  </div>
+                  <span className="collapse-icon">
                     {expandedMissing[p.id] ? '▼' : '▶'}
                   </span>
                 </div>
