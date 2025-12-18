@@ -1,4 +1,9 @@
+import { useState } from 'react'
+
 export default function ProgramList({ programs, selectedIds, coursesById }) {
+  const [expandedMatched, setExpandedMatched] = useState({})
+  const [expandedMissing, setExpandedMissing] = useState({})
+
   if (selectedIds.length === 0) {
     return (
       <div className="no-data">
@@ -56,23 +61,55 @@ export default function ProgramList({ programs, selectedIds, coursesById }) {
 
             {p.matched.length > 0 && (
               <div className="course-list-details">
-                <strong className="matched">Matchade kurser</strong>
-                <ul>
-                  {p.matched.map(id => (
-                    <li key={id} className="matched">{coursesById[id]?.title ?? id}</li>
-                  ))}
-                </ul>
+                <div 
+                  style={{
+                    display:'flex',
+                    alignItems:'center',
+                    justifyContent:'space-between',
+                    cursor:'pointer',
+                    padding:'8px 0'
+                  }}
+                  onClick={() => setExpandedMatched(prev => ({...prev, [p.id]: !prev[p.id]}))}
+                >
+                  <strong className="matched">Matchade kurser ({p.matched.length})</strong>
+                  <span style={{color:'var(--success)',fontSize:12,fontWeight:600}}>
+                    {expandedMatched[p.id] ? '▼' : '▶'}
+                  </span>
+                </div>
+                {expandedMatched[p.id] && (
+                  <ul style={{marginTop:8}}>
+                    {p.matched.map(id => (
+                      <li key={id} className="matched">{coursesById[id]?.title ?? id}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
 
             {p.missingSelected.length > 0 && (
               <div className="course-list-details">
-                <strong className="missing">Finns inte i det här programmet</strong>
-                <ul>
-                  {p.missingSelected.map(id => (
-                    <li key={id} className="missing">{coursesById[id]?.title ?? id}</li>
-                  ))}
-                </ul>
+                <div 
+                  style={{
+                    display:'flex',
+                    alignItems:'center',
+                    justifyContent:'space-between',
+                    cursor:'pointer',
+                    padding:'8px 0'
+                  }}
+                  onClick={() => setExpandedMissing(prev => ({...prev, [p.id]: !prev[p.id]}))}
+                >
+                  <strong className="missing">Finns inte i programmet ({p.missingSelected.length})</strong>
+                  <span style={{color:'var(--danger)',fontSize:12,fontWeight:600}}>
+                    {expandedMissing[p.id] ? '▼' : '▶'}
+                  </span>
+                </div>
+                {expandedMissing[p.id] && (
+                  <ul style={{marginTop:8}}>
+                    {p.missingSelected.map(id => (
+                      <li key={id} className="missing">{coursesById[id]?.title ?? id}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
 
