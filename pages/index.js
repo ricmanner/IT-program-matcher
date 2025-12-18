@@ -67,7 +67,7 @@ export default function Home() {
           <p style={{color:'var(--text-muted)',lineHeight:1.6,margin:0}}>
             {comparisonMode 
               ? 'Välj 2-3 program nedan för att jämföra deras kurser och se vad som är unikt eller delat.'
-              : 'Välj kurser som verkar intressanta och se vilket program på Högskolan i Skövde som passar bäst. Matchningen uppdateras i realtid.'}
+              : 'Det kan vara svårt att välja mellan IT-program. Kursinnehållet skiljer sig åt mer än man tror. Välj kurser som verkar intressanta och se vilket IT-program på Högskolan i Skövde som passar just dig bäst. Matchningen uppdateras i realtid.'}
           </p>
         </div>
         {!comparisonMode && (
