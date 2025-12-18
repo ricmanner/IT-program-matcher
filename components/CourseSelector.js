@@ -4,7 +4,7 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
   const [q, setQ] = useState('')
   const [showSelected, setShowSelected] = useState(false)
   const [expandedCategories, setExpandedCategories] = useState({})
-  const [viewMode, setViewMode] = useState('categories') // 'list' or 'categories'
+  const [viewMode, setViewMode] = useState('list') // 'list' or 'categories'
 
   const coursesById = useMemo(() => {
     const map = {}
@@ -166,9 +166,9 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
                   fontWeight:600,
                   transition:'all 0.2s'
                 }}
-                title="Lista"
+                title="Visa som lista"
               >
-                ☰
+                Alla kurser
               </button>
               <button
                 onClick={() => setViewMode('categories')}
@@ -183,9 +183,9 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
                   fontWeight:600,
                   transition:'all 0.2s'
                 }}
-                title="Kategorier"
+                title="Visa som kategorier"
               >
-                📁
+                Kategorier
               </button>
             </div>
           )}
