@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 
 export default function CourseSelector({ courses, selectedIds, onChange, courseOverlapCounts = {} }) {
   const [q, setQ] = useState('')
+  const [showSelected, setShowSelected] = useState(true)
 
   const filtered = useMemo(() => {
     const s = q.trim().toLowerCase()
@@ -37,25 +38,55 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
 
       {selectedIds.length > 0 && (
         <div style={{marginBottom:16}}>
-          <div style={{fontWeight:700,fontSize:13,color:'#6b7280',marginBottom:8}}>
-            Valda ({selectedIds.length})
+          <div 
+            style={{
+              fontWeight:700,
+              fontSize:13,
+              color:'#6b7280',
+              marginBottom:8,
+              display:'flex',
+              alignItems:'center',
+              justifyContent:'space-between'
+            }}
+          >
+            <span>Valda ({selectedIds.length})</span>
+            <button
+              onClick={() => setShowSelected(!showSelected)}
+              style={{
+                background:'none',
+                border:'none',
+                color:'var(--primary)',
+                cursor:'pointer',
+                fontSize:12,
+                fontWeight:600,
+                padding:'4px 8px',
+                borderRadius:6,
+                transition:'all 0.2s'
+              }}
+              onMouseOver={(e) => e.target.style.background = 'rgba(59,130,246,0.1)'}
+              onMouseOut={(e) => e.target.style.background = 'none'}
+            >
+              {showSelected ? 'Dölj' : 'Visa'}
+            </button>
           </div>
-          <div className="selected-chips">
-            {selectedIds.map(id => {
-              const c = courses.find(x => x.id === id)
-              if (!c) return null
-              return (
-                <button
-                  key={id}
-                  className="chip"
-                  onClick={() => toggle(id)}
-                  title="Klicka för att ta bort"
-                >
-                  {c.title}
-                </button>
-              )
-            }).filter(Boolean)}
-          </div>
+          {showSelected && (
+            <div className="selected-chips">
+              {selectedIds.map(id => {
+                const c = courses.find(x => x.id === id)
+                if (!c) return null
+                return (
+                  <button
+                    key={id}
+                    className="chip"
+                    onClick={() => toggle(id)}
+                    title="Klicka för att ta bort"
+                  >
+                    {c.title}
+                  </button>
+                )
+              }).filter(Boolean)}
+            </div>
+          )}
         </div>
       )}
 
