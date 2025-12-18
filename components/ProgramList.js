@@ -66,7 +66,6 @@ export default function ProgramList({ programs, selectedIds, coursesById }) {
                   onClick={() => setExpandedMatched(prev => ({...prev, [p.id]: !prev[p.id]}))}
                 >
                   <div style={{display:'flex',alignItems:'center',gap:8}}>
-                    <span style={{fontSize:16}}>✓</span>
                     <strong className="matched">Matchade kurser</strong>
                     <span className="count-badge matched-badge">{p.matched.length}</span>
                   </div>
@@ -91,7 +90,6 @@ export default function ProgramList({ programs, selectedIds, coursesById }) {
                   onClick={() => setExpandedMissing(prev => ({...prev, [p.id]: !prev[p.id]}))}
                 >
                   <div style={{display:'flex',alignItems:'center',gap:8}}>
-                    <span style={{fontSize:16}}>✕</span>
                     <strong className="missing">Finns inte i programmet</strong>
                     <span className="count-badge missing-badge">{p.missingSelected.length}</span>
                   </div>
