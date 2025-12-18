@@ -48,7 +48,7 @@ export default function Home() {
             onClick={() => setComparisonMode(!comparisonMode)}
             style={{fontSize:14}}
           >
-            {comparisonMode ? '📊 Jämför program' : '📊 Jämför program'}
+            {comparisonMode ? '← Tillbaka till kurser' : '📊 Jämför program'}
           </button>
           <button
             className="theme-toggle"
