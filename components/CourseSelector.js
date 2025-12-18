@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 
-export default function CourseSelector({ courses, selectedIds, onChange }) {
+export default function CourseSelector({ courses, selectedIds, onChange, courseOverlapCounts = {} }) {
   const [q, setQ] = useState('')
 
   const filtered = useMemo(() => {
@@ -80,8 +80,16 @@ export default function CourseSelector({ courses, selectedIds, onChange }) {
                 aria-label={`Select ${c.title}`}
               />
               <div style={{flex:1,minWidth:0}}>
-                <div style={{fontWeight:600,fontSize:13.5}}>
-                  {c.title}
+                <div style={{fontWeight:600,fontSize:13.5,display:'flex',alignItems:'center',gap:8,flexWrap:'wrap'}}>
+                  <span>{c.title}</span>
+                  {courseOverlapCounts[c.id] > 1 && (
+                    <span 
+                      className="overlap-badge"
+                      title={`Ingår i ${courseOverlapCounts[c.id]} program`}
+                    >
+                      ×{courseOverlapCounts[c.id]}
+                    </span>
+                  )}
                 </div>
                 <div className="muted">
                   {c.code ?? ''} {c.credits ? `• ${c.credits} hp` : ''}
