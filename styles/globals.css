@@ -423,9 +423,7 @@ body{
 .course-list-details li::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%)}
 
 .matched{color:var(--success)}
-.matched::before{content:"✓"}
 .missing{color:var(--danger)}
-.missing::before{content:"✕"}
 
 .no-data{
   padding:40px 24px;
