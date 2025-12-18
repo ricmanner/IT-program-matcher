@@ -46,7 +46,16 @@ const courses = [
   { id: 'businessintelligence-praktisk-analys', title: 'BusinessIntelligence - praktisk analys', credits: 7.5 },
   { id: 'foretagsprojekt-inriktning-businessintelligence', title: 'Företagsprojekt inriktning BusinessIntelligence', credits: 15 },
   { id: 'utveckling-av-it-i-organisationer-businessintelligence', title: 'Utveckling av IT i organisationer - inriktning BusinessIntelligence', credits: 15 },
-  { id: 'businessintelligence-aktuella-trender', title: 'BusinessIntelligence - aktuella trender', credits: 7.5 }
+  { id: 'businessintelligence-aktuella-trender', title: 'BusinessIntelligence - aktuella trender', credits: 7.5 },
+  { id: 'affective-interaction-och-emotioner', title: 'Affective interaction och emotioner', credits: 7.5 },
+  { id: 'forskningsmetoder-och-tekniker-inom-ux-design', title: 'Forskningsmetoder och tekniker inom User Experience Design', credits: 15 },
+  { id: 'prototyping-och-granssnittsdesign', title: 'Prototyping och gränssnittsdesign', credits: 7.5 },
+  { id: 'prototypprojekt', title: 'Prototypprojekt', credits: 7.5 },
+  { id: 'service-design', title: 'Service design', credits: 7.5 },
+  { id: 'social-computing-och-datorstott-samarbete', title: 'Social Computing och datorstött samarbete', credits: 7.5 },
+  { id: 'ux-design-forskning-och-utveckling', title: 'User Experience Design - forskning och utveckling', credits: 15 },
+  { id: 'ux-design-projekt-i-extern-organisation', title: 'User Experience Design - projekt i extern organisation', credits: 15 },
+  { id: 'utvarderingsmetoder-inom-ux-design', title: 'Utvärderingsmetoder inom User Experience Design', credits: 7.5 }
 ]
 
 export default courses

@@ -49,6 +49,18 @@ const programs = [
       // electives
       'introduktion-till-ux-design','it-forensik','manniskans-kognitiva-formagor-och-it','statistik','webbprogrammering'
     ]
+  },
+  {
+    id: 'user-experience-design',
+    name: 'User Experience Design',
+    url: 'https://www.his.se/utbildning/data-och-it/user-experience-design/',
+    courseIds: [
+      'introduktion-till-informationssakerhet','introduktion-till-ux-design','it-i-organisationer-introduktion',
+      'manniskans-kognitiva-formagor-och-it','webbutveckling-webbplatsdesign','affective-interaction-och-emotioner',
+      'forskningsmetoder-och-tekniker-inom-ux-design','prototyping-och-granssnittsdesign','prototypprojekt',
+      'service-design','social-computing-och-datorstott-samarbete','ux-design-forskning-och-utveckling',
+      'ux-design-projekt-i-extern-organisation','utvarderingsmetoder-inom-ux-design'
+    ]
   }
 ]
 
