@@ -140,19 +140,12 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
         </div>
       )}
 
-      <div style={{marginBottom:8}}>
-        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:8}}>
-          <div style={{fontWeight:700,fontSize:13,color:'#6b7280'}}>
-            {filtered ? `Sökresultat (${filtered.length})` : 'Välj kurser'}
-          </div>
-          {!filtered fontWeight:700,fontSize:13,color:'#6b7280'}}>
-          {filtered ? `Sökresultat (${filtered.length})` : 'Alla kurser'}
-        </div>
-      </div>
-
       {filtered ? (
         // Show search results
         <div className="course-list">
+          <div style={{fontWeight:700,fontSize:13,color:'#6b7280',marginBottom:8}}>
+            Sökresultat ({filtered.length})
+          </div>
           {filtered.length === 0 ? (
             <div className="muted" style={{padding:12,textAlign:'center'}}>
               Inga kurser hittades
@@ -180,7 +173,11 @@ export default function CourseSelector({ courses, selectedIds, onChange, courseO
               }}>
                 {category}
               </div>
-              {coursesInCat.map(c => renderCourseItem(c)
+              {coursesInCat.map(c => renderCourseItem(c))}
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="muted" style={{marginTop:12,textAlign:'center',fontSize:12}}>
         {selectedIds.length > 0 ? `${selectedIds.length} valda` : 'Välj kurser för att börja'}
